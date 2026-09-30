@@ -1,0 +1,9 @@
+const TimelinePage = () => {
+  return (
+    <div>
+      <h2>This is Timeline Page</h2>
+    </div>
+  );
+};
+
+export default TimelinePage;
