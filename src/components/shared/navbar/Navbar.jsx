@@ -18,7 +18,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-base-100 shadow-sm geist">
+    <nav className="bg-base-100 shadow-md geist">
       <div className="hidden lg:flex justify-between items-center container mx-auto h-18">
         <Link to="/">
           <img src={Logo} alt="Keep Keeper logo" />

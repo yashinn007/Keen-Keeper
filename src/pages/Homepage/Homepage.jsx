@@ -1,7 +1,11 @@
+import FriendsSection from "../../components/homepage/FriendsSection";
+import HeroSection from "../../components/homepage/HeroSection";
+
 const Homepage = () => {
   return (
-    <div>
-      <h2>This is home Page</h2>
+    <div className="container mx-auto my-6 md:my-10 lg:my-20">
+      <HeroSection></HeroSection>
+      <FriendsSection></FriendsSection>
     </div>
   );
 };
