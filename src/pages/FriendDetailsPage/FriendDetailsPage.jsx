@@ -22,7 +22,7 @@ const FriendDetailsPage = () => {
   const expectedFriend = friends.find(
     (friend) => friend.id === Number(friendId),
   );
-  console.log("expectedFriend", expectedFriend);
+  // console.log("expectedFriend", expectedFriend);
   const {
     picture,
     name,
@@ -36,9 +36,9 @@ const FriendDetailsPage = () => {
   return (
     <div className="container mx-auto my-6 md:my-10 lg:my-20 px-3 md:px-5 ">
       {/* grid container */}
-      <div className="grid grid-cols-1 md:grid-cols-3 space-x-0 space-y-5 md:space-5 w-full mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 space-x-0 space-y-5 md:space-5 md:space-x-5 w-full mx-auto">
         {/* grid-1 */}
-        <div className="rounded-lg row-span-3 bg-white space-y-5 w-full">
+        <div className="rounded-lg row-span-3 bg-white space-y-5 ">
           <div className="flex flex-col justify-center items-center gap-3 py-6 shadow-sm rounded-lg">
             <div className="rounded-full w-20 h-20  overflow-hidden">
               <img src={picture} alt={name} className=" object-cover" />
@@ -90,7 +90,7 @@ const FriendDetailsPage = () => {
           </div>
         </div>
         {/* grid-3 */}
-        <div className="rounded-lg col-span-2 bg-white p-5 space-y-5 shadow-lg">
+        <div className="rounded-lg col-span-2 bg-white p-5 space-y-5 shadow-lg w-full">
           <div className="flex justify-between items-center w-full">
             <h2 className="text-xl font-medium text-[#244d3fFF]">
               Relationship Goal

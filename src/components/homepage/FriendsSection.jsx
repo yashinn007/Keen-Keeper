@@ -4,7 +4,7 @@ import FriendCard from "./FriendCard";
 const FriendsSection = () => {
   // created a hook and push all fetching codes & get API data and loading.
   const { friends, loading } = useFriendsData();
-  console.log(friends);
+
   return (
     <div className="my-15 ">
       <h4 className="text-2xl font-semibold">Your Friends:</h4>
