@@ -5,6 +5,7 @@ import { IoMdText } from "react-icons/io";
 import { FaVideo } from "react-icons/fa";
 import { useContext } from "react";
 import { FriendsContext } from "../../context/FriendsContext";
+import { toast } from "react-toastify";
 
 const FriendDetailsPage = () => {
   //get friendDetails id by useParams();
@@ -36,6 +37,9 @@ const FriendDetailsPage = () => {
       called_at: new Date().toISOString().split("T")[0],
     };
     setCalledFriend([...calledFriend, newExpectedFriend]);
+    toast.success(
+      `${newExpectedFriend.contact} with ${newExpectedFriend.name}`,
+    );
   };
 
   const {
