@@ -1,18 +1,58 @@
 // import { useContext } from "react";
 // import { FriendsContext } from "../../context/FriendsContext";
+import { useState } from "react";
 import Call from "../../assets/images/call.png";
 import Text from "../../assets/images/text.png";
 import Video from "../../assets/images/video.png";
 import useFilterFriends from "../../hooks/useFilterFriends";
 
 const TimelinePage = () => {
-  //get context data-----------------------
-  // const { calledFriend, setCalledFriend } = useContext(FriendsContext);
+  //get context data--& also filtered data------------------
   const { call, text, video, calledFriend } = useFilterFriends();
-  console.log(calledFriend, "calledFriend");
+
+  //==========create filter section==================
+  const [friendsArray, setFriendsArray] = useState(calledFriend);
+
+  const handelFriendsArray = (type) => {
+    //set array based on button for map
+    if (type == "f-call") {
+      setFriendsArray(call);
+    } else if (type == "f-text") {
+      setFriendsArray(text);
+    } else if (type == "f-video") {
+      setFriendsArray(video);
+    } else {
+      setFriendsArray(calledFriend);
+    }
+  };
+  //console.log("friendsArray:", friendsArray);
   return (
     <div className="container mx-auto my-6 md:my-10 lg:my-20 px-3 md:px-5">
       <h3 className="text-5xl font-bold mb-6">Timeline</h3>
+      {/* ----------dropdown---------- */}
+      <div className="dropdown dropdown-hover">
+        <div tabIndex={0} role="button" className="btn m-1">
+          Filter timeline
+        </div>
+        <ul
+          tabIndex={-1}
+          className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+        >
+          <li onClick={() => handelFriendsArray("")}>
+            <a>Default</a>
+          </li>
+          <li onClick={() => handelFriendsArray("f-call")}>
+            <a>Call</a>
+          </li>
+          <li onClick={() => handelFriendsArray("f-text")}>
+            <a>Text</a>
+          </li>
+          <li onClick={() => handelFriendsArray("f-video")}>
+            <a>Video</a>
+          </li>
+        </ul>
+      </div>
+      {/* --------------------------- */}
       {calledFriend.length === 0 ? (
         <div className="h-[50vh] flex justify-center items-center">
           <h3 className="text-xl  text-gray-500 font-semibold">
@@ -21,7 +61,7 @@ const TimelinePage = () => {
         </div>
       ) : (
         <div className="min-h-[50vh]">
-          {calledFriend.map((friend, index) => (
+          {friendsArray.map((friend, index) => (
             <div
               className=" flex justify-start items-center gap-4 p-3 my-6 pl-6"
               key={index}
