@@ -3,12 +3,17 @@ import useFriendsData from "../../hooks/useFriendsData";
 import { MdAddCall } from "react-icons/md";
 import { IoMdText } from "react-icons/io";
 import { FaVideo } from "react-icons/fa";
+import { useContext } from "react";
+import { FriendsContext } from "../../context/FriendsContext";
 
 const FriendDetailsPage = () => {
   //get friendDetails id by useParams();
   const { friendId } = useParams();
   // get all friends data by custom hook
   const { friends, loading } = useFriendsData();
+
+  //get context data-----------------------
+  const { calledFriend, setCalledFriend } = useContext(FriendsContext);
 
   // display loading (importent) return
   if (loading) {
@@ -22,7 +27,17 @@ const FriendDetailsPage = () => {
   const expectedFriend = friends.find(
     (friend) => friend.id === Number(friendId),
   );
-  // console.log("expectedFriend", expectedFriend);
+  // handel call buttons
+  // 2 data i have to add, click date and contect type.
+  const handelCallBtn = (type) => {
+    const newExpectedFriend = {
+      ...expectedFriend,
+      contact: type,
+      called_at: new Date().toISOString().split("T")[0],
+    };
+    setCalledFriend([...calledFriend, newExpectedFriend]);
+  };
+
   const {
     picture,
     name,
@@ -107,18 +122,27 @@ const FriendDetailsPage = () => {
             Quick Check-In
           </h2>
           <div className="flex space-y-0 space-x-2  md:space-5 justify-between items-center ">
-            <div className="flex flex-1 min-w-0 justify-center items-center flex-col space-y-2 py-4 rounded-lg bg-base-200">
+            <button
+              onClick={() => handelCallBtn("call")}
+              className="flex flex-1 min-w-0 justify-center items-center flex-col space-y-2 py-4 rounded-lg bg-base-200"
+            >
               <MdAddCall className="text-3xl" />
               <p>Call</p>
-            </div>
-            <div className="flex flex-1 min-w-0 justify-center items-center flex-col  space-y-2 py-4 rounded-lg bg-base-200">
+            </button>
+            <button
+              onClick={() => handelCallBtn("text")}
+              className="flex flex-1 min-w-0 justify-center items-center flex-col  space-y-2 py-4 rounded-lg bg-base-200"
+            >
               <IoMdText className="text-3xl" />
               <p>Text</p>
-            </div>
-            <div className="flex flex-1 min-w-0 justify-center items-center flex-col space-y-2 py-4 rounded-lg bg-base-200">
+            </button>
+            <button
+              onClick={() => handelCallBtn("video")}
+              className="flex flex-1 min-w-0 justify-center items-center flex-col space-y-2 py-4 rounded-lg bg-base-200"
+            >
               <FaVideo className="text-3xl" />
               <p>Video</p>
-            </div>
+            </button>
           </div>
         </div>
       </div>
