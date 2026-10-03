@@ -46,6 +46,7 @@
 1. Used custom hooks to fetch data to reduce code.<br/>
 2. Used the Context API to access the called-array from anywhere.<br/>
 3. After clicking any Contect button i have added some extra data into the friend object. Which helped me to differentiate the array. It's used for filtering and py-chart<br/>
+4. Responsive design.
 
 <h2>Live Link:</h2>
 https://keen-keeper-gray-nine.vercel.app/
