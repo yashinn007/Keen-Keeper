@@ -4,6 +4,7 @@ import Homepage from "../pages/Homepage/Homepage";
 import TimelinePage from "../pages/TimelinePage/TimelinePage";
 import StatusPage from "../pages/StatusPage/StatusPage";
 import FriendDetailsPage from "../pages/FriendDetailsPage/FriendDetailsPage";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -27,5 +28,6 @@ export const router = createBrowserRouter([
         Component: FriendDetailsPage,
       },
     ],
+    errorElement: <ErrorPage></ErrorPage>,
   },
 ]);
